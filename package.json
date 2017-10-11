@@ -1,0 +1,16 @@
+{
+  "name": "samuelbot",
+  "version": "1.0.0",
+  "description": "A Discord Bot that exclusively uses embeds. Made in memory of Samuel.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Primal",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "nodemon": "^1.12.1"
+  },
+  "devDependencies": {}
+}
