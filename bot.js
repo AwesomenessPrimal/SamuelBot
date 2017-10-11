@@ -287,7 +287,7 @@ client.on('message', message => {
             if (message.content.startsWith(prefix + 'temmize ')) {
                 var targetmsg = message.content
                 var victim = targetmsg.replace(prefix + 'temmize ', "")
-                const temmize = require('./temmize.js');
+                const temmize = require('./temmize.js'); //This was not made by me. The original author of this is dragonfire535, the creator of XiaoBot
                 const thingToTranslate = victim;
 		            const temmized = temmize(thingToTranslate);
 								var embed3 = new Discord.RichEmbed()

@@ -1,3 +1,4 @@
+//This was not made by me. The original author of this is dragonfire535, the creator of XiaoBot
 const dictionary = {
     "i": "tem",
     "hi": "hoi",
