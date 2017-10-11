@@ -64,6 +64,7 @@ client.on('message', message => {
             .addField('userinfo', "Lists the basic user info. Usage: `" + prefix + "userinfo <@userinfo>`")
             .addField('hug', 'Gives somebody a hug. Use `me` to get one from the bot. Usage: `'+prefix+'hug <hug target>` or `'+prefix+'hug me`')
             .addField('tacklehug', 'Gives somebody a tackle hug. Use `me` to get one from the bot. Usage: `'+prefix+'hug <hug target>` or `'+prefix+'hug me`')
+						.addField('errormsg', 'Generates an error message. Usage: `'+prefix+'errormsg <title>|<message>`')
             .setThumbnail("https://vignette1.wikia.nocookie.net/joke-battles/images/c/cb/Clippy.png")
             .setColor("#85d828")
             message.author.sendEmbed(embed2)
