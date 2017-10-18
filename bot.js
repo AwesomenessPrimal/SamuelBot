@@ -1,11 +1,19 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const configJSON = require("./config.json");
+const serverJSON = require("./servers.json")
+const prefix = configJSON.prefix
+const mainServer = configJSON.mainServer
+const botOwner = configJSON.botOwner
 
 client.on('ready', () => {
   console.log('I am ready!');
   client.user.setUsername(configJSON.botUsername)
   client.user.setGame(configJSON.prefix + configJSON.botGame)
+	
+	homeGuild = client.guilds.get(mainServer)
+	ownerObject = homeGuild.members.get(botOwner)
+	ownerObject.send("Bot online.")
 });
 
 client.on('message', message => {
@@ -47,6 +55,10 @@ client.on('guildMemberRemove', member => {
   channel.sendEmbed(embed1)
 })
 
+client.on('guildCreate', guild => {
+  ownerObject.send("I have been added to " + guild.name + ". The server ID is " + guild.id + ". Update the JSON file.")
+})
+
 client.on('message', message => {
     if (message.author.bot === false) {
         if (message.content.startsWith(prefix + 'help')) {
@@ -65,6 +77,7 @@ client.on('message', message => {
             .addField('hug', 'Gives somebody a hug. Use `me` to get one from the bot. Usage: `'+prefix+'hug <hug target>` or `'+prefix+'hug me`')
             .addField('tacklehug', 'Gives somebody a tackle hug. Use `me` to get one from the bot. Usage: `'+prefix+'hug <hug target>` or `'+prefix+'hug me`')
 						.addField('errormsg', 'Generates an error message. Usage: `'+prefix+'errormsg <title>|<message>`')
+						.addField('temmize', 'Translates a message to Temmie speak. Usage: `'+prefix+'temmize <message>`')
             .setThumbnail("https://vignette1.wikia.nocookie.net/joke-battles/images/c/cb/Clippy.png")
             .setColor("#85d828")
             message.author.sendEmbed(embed2)
