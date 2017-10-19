@@ -13,7 +13,9 @@ client.on('ready', () => {
 	
 	homeGuild = client.guilds.get(mainServer)
 	ownerObject = homeGuild.members.get(botOwner)
-	ownerObject.send("Bot online.")
+	//ownerObject.send("Bot online.")
+	
+	console.log(serverJSON.s363329820962062337["leave"])
 });
 
 client.on('message', message => {
@@ -56,7 +58,8 @@ client.on('guildMemberRemove', member => {
 })
 
 client.on('guildCreate', guild => {
-  ownerObject.send("I have been added to " + guild.name + ". The server ID is " + guild.id + ". Update the JSON file.")
+	newServer = guild.id.toString()
+	ownerObject.send("I have been added to "+guild.name+" with the server ID "+newServer+". Please update your JSON file.")
 })
 
 client.on('message', message => {
