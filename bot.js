@@ -14,8 +14,6 @@ client.on('ready', () => {
 	homeGuild = client.guilds.get(mainServer)
 	ownerObject = homeGuild.members.get(botOwner)
 	//ownerObject.send("Bot online.")
-	
-	console.log(serverJSON.s363329820962062337["leave"])
 });
 
 client.on('message', message => {
@@ -32,29 +30,35 @@ client.on('message', message => {
 });
 
 client.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find('name', 'welcome');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  var embed1 = new Discord.RichEmbed()
-  .setAuthor("Member Joined", member.guild.iconURL)
-  .setDescription("<@" + member.id + "> has joined" + member.guild.name + "! Hai! How are ya?")
-  .setThumbnail(member.user.avatarURL)
-  channel.sendEmbed(embed1)
+	let testGuild = "s" + member.guild.id
+	if (serverJSON[testGuild].greet === true) {
+		// Send the message to a designated channel on a server:
+		const channel = member.guild.channels.find('name', 'welcome');
+		// Do nothing if the channel wasn't found on this server
+		if (!channel) return;
+		// Send the message, mentioning the member
+		var embed1 = new Discord.RichEmbed()
+		.setAuthor("Member Joined", member.guild.iconURL)
+		.setDescription("<@" + member.id + "> has joined " + member.guild.name + "! Hai! How are ya?")
+		.setThumbnail(member.user.avatarURL)
+		channel.sendEmbed(embed1)
+	}
 })
 
 client.on('guildMemberRemove', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find('name', 'welcome');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  var embed1 = new Discord.RichEmbed()
-  .setAuthor("Member Left", member.guild.iconURL)
-  .setDescription("<@" + member.id + "> has left" + member.guild.name + "... Gee gee.")
-  .setThumbnail(member.user.avatarURL)
-  channel.sendEmbed(embed1)
+	let testGuild = "s" + member.guild.id
+	if (serverJSON[testGuild].leave === true) {
+		// Send the message to a designated channel on a server:
+		const channel = member.guild.channels.find('name', 'welcome');
+		// Do nothing if the channel wasn't found on this server
+		if (!channel) return;
+		// Send the message, mentioning the member
+		var embed1 = new Discord.RichEmbed()
+		.setAuthor("Member Left", member.guild.iconURL)
+		.setDescription("<@" + member.id + "> has left " + member.guild.name + "... Gee gee.")
+		.setThumbnail(member.user.avatarURL)
+		channel.sendEmbed(embed1)
+	}
 })
 
 client.on('guildCreate', guild => {
